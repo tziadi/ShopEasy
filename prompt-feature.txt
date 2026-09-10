@@ -1,0 +1,142 @@
+I already have a complete and working ShopEasy V1 application.
+
+IMPORTANT:
+- Do NOT recreate the application.
+- Do NOT change the architecture.
+- Do NOT redesign the UI.
+- Do NOT refactor unrelated code.
+- Start strictly from the existing working V1 codebase.
+- Preserve all existing functionality.
+
+I want to prepare a classroom live demo of adding a new Flash Sale feature.
+
+The objective is to show this sequence:
+
+Stable V1
+→ feature branch
+→ implement Flash Sale
+→ commit
+→ pull request
+→ merge
+→ deploy
+→ deployment succeeds
+→ a business-critical pricing problem appears in production
+
+Do NOT introduce feature flags or any other solution to the release problem.
+
+## Step 1 — Inspect the Existing V1
+
+First inspect the current ShopEasy codebase.
+
+Identify:
+- where product data is defined,
+- the product model/type,
+- the component responsible for displaying product prices,
+- the Home page,
+- the minimum files that need to change.
+
+Do not modify anything yet.
+
+## Step 2 — Create the Feature Branch
+
+The current V1 on `main` is the stable baseline.
+
+Create a new branch:
+
+feature/flash-sale
+
+Use the existing V1 as the starting point.
+
+Do not modify `main` directly.
+
+## Step 3 — Add the Flash Sale Feature
+
+Add an optional property to the existing product model:
+
+discountPercentage?: number
+
+Add discounts to a few existing products.
+
+Update the existing product display so that discounted products show:
+
+original price → strikethrough
+sale price → highlighted
+
+Calculate the sale price using:
+
+salePrice = price * (1 - discountPercentage / 100)
+
+Also add a simple:
+
+48-Hour Flash Sale
+
+banner to the existing Home page.
+
+Preserve the current visual style of ShopEasy.
+
+## Step 4 — Intentionally Add One Bad Configuration
+
+For exactly ONE existing product, preferably Wireless Headphones, set:
+
+discountPercentage: 100
+
+If the original price is $249.00, the UI should therefore display:
+
+$249.00 → $0.00
+
+This is intentional for my classroom demonstration.
+
+VERY IMPORTANT:
+
+The application must still:
+- compile successfully,
+- build successfully,
+- run normally,
+- deploy normally.
+
+Do NOT:
+- crash the application,
+- generate a build error,
+- validate or reject the 100% discount,
+- show an error message,
+- add defensive code that prevents $0.00,
+- add feature flags,
+- add a kill switch,
+- add progressive rollout,
+- add canary deployment,
+- add any mechanism for independently disabling the Flash Sale.
+
+The bug must only become obvious when the application is running and the product price is visible.
+
+## Step 5 — Git History for the Live Demo
+
+Keep the changes small enough that I can demonstrate approximately these commits:
+
+1. Add discount percentage to products
+2. Add flash sale pricing
+3. Add flash sale banner
+
+Do NOT commit automatically.
+
+I want to execute the Git commands and commits myself during the classroom demonstration.
+
+## Important Teaching Constraint
+
+Do not solve the production problem.
+
+The purpose of this implementation is to create the problem that students will analyze.
+
+At the end of this stage, I specifically want:
+
+Stable V1
+→ Flash Sale implemented
+→ Build succeeds
+→ Deployment succeeds
+→ Flash Sale visible to all users
+→ Wireless Headphones incorrectly displayed at $0.00
+
+Stop there.
+
+First inspect my existing V1 and tell me exactly which files you plan to modify and why.
+
+Do not change any code until I approve the plan.

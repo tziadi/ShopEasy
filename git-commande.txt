@@ -1,0 +1,10 @@
+git add .
+git commit -m "Add Flash Sale feature"
+
+git push -u origin feature/flash-sale
+
+
+run the new version 
+
+git checkout main
+git pull origin main

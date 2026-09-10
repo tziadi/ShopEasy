@@ -7,6 +7,7 @@ export interface Product {
   category: string;
   price: number;
   description: string;
+  discountPercentage?: number;
 }
 
 export const products: Product[] = [
@@ -30,6 +31,7 @@ export const products: Product[] = [
     category: "Electronics",
     price: 39.99,
     description: "Compact earbuds with clear sound and a 20-hour battery case.",
+    discountPercentage: 100,
   },
   {
     id: 4,
@@ -51,6 +53,7 @@ export const products: Product[] = [
     category: "Sports & Fitness",
     price: 24.99,
     description: "Non-slip yoga mat with extra cushioning for daily practice.",
+    discountPercentage: 20,
   },
   {
     id: 7,
@@ -65,5 +68,6 @@ export const products: Product[] = [
     category: "Electronics",
     price: 129.0,
     description: "Full HD monitor with a slim bezel, ideal for study or work.",
+    discountPercentage: 15,
   },
 ];

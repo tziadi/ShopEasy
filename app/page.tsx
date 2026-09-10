@@ -7,7 +7,11 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-12">
-      <section className="rounded-lg bg-blue-50 px-8 py-16 text-center">
+      <div className="rounded-lg bg-red-600 px-6 py-3 text-center text-sm font-semibold text-white">
+        ⚡ 48-Hour Flash Sale — Save now on select items!
+      </div>
+
+      <section className="mt-8 rounded-lg bg-blue-50 px-8 py-16 text-center">
         <h1 className="text-4xl font-bold text-slate-900">
           Welcome to ShopEasy
         </h1>
